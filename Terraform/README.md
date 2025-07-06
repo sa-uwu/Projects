@@ -67,6 +67,7 @@ terraform apply
 ```
 
 6. Access the NGINX Web Server by copying the public IP or URL from the Terraform output and open it in your browser
+   ![Output](Terraform/Images/Output.png)
 
 ---
 
