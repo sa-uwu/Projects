@@ -93,10 +93,9 @@ It helps you keeps your console clean and not **wallet💰**
 **Checkout this [AWS re:Post article](https://repost.aws/knowledge-center/install-ssm-agent-ec2-linux)** for more info.
 
 
-
+---
 ## From Author ✍️
 
----
 Just getting started with my journey of documenting both my professional and personal work.  
 There’s much more to come as I continue to broaden my expertise in AWS and the IT world in general.
 
