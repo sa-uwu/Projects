@@ -105,11 +105,11 @@ sudo dnf install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/late
 sudo systemctl enable amazon-ssm-agent
 sudo systemctl start amazon-ssm-agent
 ```
-UserData:-
+**UserData:-**
 ![](https://github.com/sa-uwu/Projects/blob/main/Terraform/Images/updated%20userdata.png)
 
 
-Permission policy for the instance role:-
+**SSM permission policy for the instance role:-**
 ![](https://github.com/sa-uwu/Projects/blob/main/Terraform/Images/ssm%20permission%20policy.png)
 
 
