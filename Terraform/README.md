@@ -93,9 +93,9 @@ It helps you keeps your console clean and not **wallet💰**
 
 **Checkout this [AWS re:Post article](https://repost.aws/knowledge-center/install-ssm-agent-ec2-linux)** for more info.
 
+---
 **P.S.** I’ve updated the user script to include the SSM agent — just in case you ever need to access the instance manually. 
 
-FYI: the SSM agent uses an IAM role and AWS’s internal (and encrypted) network to securely communicate with the instance. No need to juggle .pem keys or expose port 22 — just clean, keyless, native AWS access.
 ```
 #!/bin/bash
 sudo yum install nginx -y
@@ -105,12 +105,19 @@ sudo dnf install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/late
 sudo systemctl enable amazon-ssm-agent
 sudo systemctl start amazon-ssm-agent
 ```
+
+**FYI:** the SSM agent uses an IAM role and AWS’s internal (and encrypted) network to securely communicate with the instance. No need to juggle .pem keys or expose port 22 — just clean, keyless, native AWS access.
+
+
 **UserData:-**
+
 ![](https://github.com/sa-uwu/Projects/blob/main/Terraform/Images/updated%20userdata.png)
 
 
 **SSM permission policy for the instance role:-**
+
 ![](https://github.com/sa-uwu/Projects/blob/main/Terraform/Images/ssm%20permission%20policy.png)
+
 
 
 ---
