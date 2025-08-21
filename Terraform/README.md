@@ -42,8 +42,8 @@ This project provisions a complete AWS infrastructure using Terraform to deploy 
 ## 🧑‍💻 How to Use
 1. Clone this repo
 ```bash
-git clone https://github.com/your-username/terraform-nginx-aws.git
-cd terraform-nginx-aws
+git clone https://github.com/sa-uwu/Projects.git
+cd Projects/Terraform/code/
 ```
 
 2. Initialize Terraform
