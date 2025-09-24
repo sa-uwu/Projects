@@ -4,7 +4,7 @@
 
 ## 🎥 Demo
 
-![App Demo](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/demo.gif)
+![App Demo](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/demo.gif)
 
 ---
 
@@ -12,13 +12,13 @@
 
 ### Landing Page
 
-![Landing page for the app](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Homepage.png)
+![Landing page for the app](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Homepage.png)
 
 ---
 
 ### Fortune Messages
 
-![Fortune messages](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Fortune%201.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Fortune%202.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Fortune%203.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Fortune%204.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Fortune%205.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/Fortune%206.png)
+![Fortune messages](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Fortune%201.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Fortune%202.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Fortune%203.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Fortune%204.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Fortune%205.png) ![Fortune message](https://raw.githubusercontent.com/sa-uwu/Projects/main/Serverless%20Fortune%20Cookies/assets/Fortune%206.png)
 
 ---
 
