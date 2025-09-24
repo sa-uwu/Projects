@@ -1,1 +1,1 @@
-![](https://github.com/sa-uwu/Projects/blob/main/Weather-App/assets/Demo.gif)
+![](https://raw.githubusercontent.com/sa-uwu/Projects/main/Weather-App/assets/Demo.gif)
