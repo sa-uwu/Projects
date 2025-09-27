@@ -1,3 +1,3 @@
-[](https://sa-uwu.github.io/Projects/Watermark%Pipeline/assets/drawio.html)
+![](https://github.com/sa-uwu/Projects/blob/main/Watermark%20Pipeline/assets/drawio.png)
 
 
