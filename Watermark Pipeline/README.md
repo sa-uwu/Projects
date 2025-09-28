@@ -12,9 +12,11 @@ Organizations and individuals publish hundreds of photographs, diagrams, and vis
 
 I definitely would not want to spend that much time on one image, let alone hundreds of them 🤯. That is when the idea struck me:  
 <br>
-### 💡 Let’s automate it.  
 
-![](https://tenor.com/e4t8t1XTDgZ.gif)
+<p align="center">
+  <img src="https://media1.tenor.com/m/OSviYqOqvOMAAAAC/automation-audio-engineer.gif" width="400">
+</p>
+
 And that is how this small project came to life 🚀.  
 
 ---
