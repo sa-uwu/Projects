@@ -120,25 +120,51 @@ In this project, we are using the **folder approach** within a single bucket for
 ### 2. Configuring IAM Roles
 <br>
 
-IAM allows **users, services, or applications** to assume roles and perform specific actions on AWS resources.  
+IAM allows **users, services,** and **applications** to assume roles and perform specific actions on AWS resources.  
 
 For this project, we need to configure IAM roles for both **Lambda** and **API Gateway**.  
+<br>
 
-Ideally in real world, one should follow the principle of **least privilege**, configuring and granting fine grain permissions that are absolutely necessary.  
-
-> ⚠️ **Best Practice Reminder**  
->
-> Ideally, in the real world, I would always recommend following the principle of **least privilege**, and configuring and granting the fine-grained permissions that are absolutely necessary.
-
-
-However, for the sake of simplicity in this demo project, we’ll loosen that approach a bit and use broader permissions (not a best practice in real-world setups).
-
-Create the IAM role for **API Gateway** as shown below:  
+- Create the IAM role for **API Gateway** as shown below:  
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW%20Role.gif" alt="API Gateway IAM Role" width="600">
   </p>
 
-Now we need to allow **S3** access by adding **Permissions**
-Now, we need to grant the IAM role **full access to S3** so it can read and write objects in the buckets.  
-> ⚠️ **Note:** In a real-world scenario, you should follow the principle of **least privilege** and grant only the specific permissions required. Here, we’re using full access for simplicity.
+<br>
+
+> ⚠️ **Best Practice Reminder**  
+>
+> In the real-world scenario, one should always follow the principle of **least-privilege**, and configure and grant fine-grained permissions that are absolutely necessary.
+> 
+>
+<br>
+
+* Following the principle of **least-privilege**, I have created a custom, fine-grained permission policy, which we will attach to the **API Gateway IAM role**.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW-S3-PutObject.gif" alt="API Gateway IAM Role" width="600">
+  </p>
+<br>
+
+* **Custom Permission Policy**
+
+``` JSON
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectTagging"
+            ],
+            "Resource": "arn:aws:s3:::us-east-1.bucketforimageupload/raw/*"
+        }
+    ]
+}
+```
+<br>
+
+Following similar steps, we will create an IAM Role for our **Lambda Functions** 
+
