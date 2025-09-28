@@ -103,12 +103,42 @@ In this project, we are using the **folder approach** within a single bucket for
 
 <br>
 
-#####  💡 Fun Fact about S3
-
-> #####  Amazon S3 is an **object storage service**, which means it does not have real folders or files.  
-> #####  Everything in S3 is treated as an **individual object**. For example:  
-> #####  - `/folder/file1.txt` is an object with actual data  
-> #####  - `/folder/` is just an empty object, with key name ending with '/'.
+> ## 💡 Fun Fact about S3 ##
+>
+> Amazon S3 is an **object storage service**, which means it does not have real folders or files.  
+>
+> Everything in S3 is treated as an **individual object**. For example:  
+> - `final/test1.png` is an object with actual data  
+> - `folder/` is just an empty object, with key name ending with ' / '
 > 
-> #####  The `folder/file` hierarchy you see in the AWS console is just a **user-friendly representation**, designed to match how humans think about organizing data.
-    
+> The `folder/file` hierarchy you see in the AWS console is just a **user-friendly representation**, designed to match how humans think about organizing data.
+
+#
+
+<br>
+
+### 2. Configuring IAM Roles
+<br>
+
+IAM allows **users, services, or applications** to assume roles and perform specific actions on AWS resources.  
+
+For this project, we need to configure IAM roles for both **Lambda** and **API Gateway**.  
+
+Ideally in real world, one should follow the principle of **least privilege**, configuring and granting fine grain permissions that are absolutely necessary.  
+
+> ⚠️ **Best Practice Reminder**  
+>
+> Ideally, in the real world, I would always recommend following the principle of **least privilege**, and configuring and granting the fine-grained permissions that are absolutely necessary.
+
+
+However, for the sake of simplicity in this demo project, we’ll loosen that approach a bit and use broader permissions (not a best practice in real-world setups).
+
+Create the IAM role for **API Gateway** as shown below:  
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW%20Role.gif" alt="API Gateway IAM Role" width="600">
+  </p>
+
+Now we need to allow **S3** access by adding **Permissions**
+Now, we need to grant the IAM role **full access to S3** so it can read and write objects in the buckets.  
+> ⚠️ **Note:** In a real-world scenario, you should follow the principle of **least privilege** and grant only the specific permissions required. Here, we’re using full access for simplicity.
