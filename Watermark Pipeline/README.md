@@ -1,4 +1,4 @@
-# 🖼️ Watermark Pipeline https://raw.githubusercontent.com/sa-uwu/Projects/main
+# 🖼️ Watermark Pipeline 
 
 It all started one fine day when I was struggling to remove a watermark from an image I wanted to use. That’s when I thought, 
 >**"if removing a watermark is this hard, how easy is it to apply one? 🤔"**
