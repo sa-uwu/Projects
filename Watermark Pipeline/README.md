@@ -86,20 +86,19 @@ This automated workflow not only reduces the **time**, but it make the task **ea
 For this project, we can either use **two separate S3 buckets** or create **two separate folders** within a single bucket.  
 
 - The first location is for uploading the **raw images**.  
-- The second location is for storing the **processed/final images**.  
+- The second location is for storing the **processed images**.  
 
-In this project, we are using the **folder approach** within a single bucket for simplicity and easier management.
+We will be using the **'folder approach'** and create two  folders within a single bucket for simplicity and easier management.
 <br>
 
 #### Refer the below image for S3 Bucket configuration
-[<img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/s3/s3bucket%20config.png" width="300">](https://github.com/sa-uwu/Projects/blob/main/Watermark%20Pipeline/assets/s3/s3bucket%20config.png)
+[<img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/s3/BucketConfig.png" width="300">](https://github.com/sa-uwu/Projects/blob/main/Watermark%20Pipeline/assets/s3/BucketConfig.png)
 
 <br> 
 
-#### Once the bucket is created, click the **'Create Folder'** button and create two folders named **'raw'** and **'final'**.
+#### Once the bucket is created, click the **'Create Folder'** button and create two folders named **`raw`** and **`final`**.
 
-![s3 folders](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/s3/s3%20folders.png)
-
+![s3 folders](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/s3/S3Folders.png)
 
 <br>
 
@@ -108,8 +107,8 @@ In this project, we are using the **folder approach** within a single bucket for
 > Amazon S3 is an **object storage service**, which means it does not have real folders or files.  
 >
 > Everything in S3 is treated as an **individual object**. For example:  
-> - `final/test1.png` is an object with actual data  
-> - `folder/` is just an empty object, with key name ending with ' / '
+> - `raw/test1.png` is an object with actual data  
+> - `raw/` is just an empty object, with key name ending with ' / '
 > 
 > The `folder/file` hierarchy you see in the AWS console is just a **user-friendly representation**, designed to match how humans think about organizing data.
 
@@ -125,7 +124,7 @@ IAM allows **users, services,** and **applications** to assume roles and perform
 For this project, we need to configure IAM roles for both **Lambda** and **API Gateway**.  
 <br>
 
-- Create the IAM role for **API Gateway** as shown below:  
+- Create the IAM role for **API Gateway `APIGW-S3-Uploads`** as shown below:  
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW%20Role.gif" alt="API Gateway IAM Role" width="600">
@@ -140,7 +139,7 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 >
 <br>
 
-* Following the principle of **least-privilege**, I have created a custom, fine-grained permission policy, which we will attach to the **API Gateway IAM role**.
+* Adhering to the principle of **least-privilege**, I have created a custom, fine-grained permission policy that will be attached to the **API Gateway IAM role `APIGW-S3-PutObject`**.
 <p align="center">
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW-S3-PutObject.gif" alt="API Gateway IAM Role" width="600">
   </p>
@@ -153,20 +152,121 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "S3Put",
             "Effect": "Allow",
             "Action": [
                 "s3:PutObject",
                 "s3:PutObjectTagging"
             ],
-            "Resource": "arn:aws:s3:::us-east-1.bucketforimageupload/raw/*"
+            "Resource": [
+              "arn:aws:s3:::{BucketName}/raw",
+              "arn:aws:s3:::{BucketName}/raw/*"
+            ]
         }
     ]
 }
 ```
+---
 <br>
 
-Following similar steps, we will create an IAM Role for our **Lambda Functions** 
+ Following similar steps, we will create two additional IAM Roles, **`LambdaWaterMarkProcessor`** and **`LambdaWaterMarkEmail`** for our **Lambda Functions** and attach below inline policies.
+
+<br>
+
+- **Inline policy for `LambdaWaterMarkProcessor`**
+
+``` JSON
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowLambdaToGetRawImages",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectTagging"
+            ],
+            "Resource": [
+                "arn:aws:s3:::{BucketName}/raw/",
+                "arn:aws:s3:::{BucketName}/raw/*"
+            ]
+        },
+        {
+            "Sid": "AllowLambdaToPutProcessedImages",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectTagging"
+            ],
+            "Resource": [
+                "arn:aws:s3:::{BucketName}/processed/",
+                "arn:aws:s3:::{BucketName}/processed/*"
+            ]
+        }
+    ]
+}
+
+```
+<br>
+
+- **Inline policy for `LambdaWaterMarkEmail`**
+
+```JSON 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "GetObject",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectTagging"
+            ],
+            "Resource": [
+                "arn:aws:s3:::{BucketName}/processed/",
+                "arn:aws:s3:::{BucketName}/processed/*"
+            ]
+        },
+        {
+            "Sid": "SendEmail",
+            "Effect": "Allow",
+            "Action": [
+                "ses:SendEmail"
+            ],
+            "Resource": [
+                "arn:aws:ses:{region}:{Account ID}:identity/abc@gmail.com",
+                "arn:aws:ses:{region}:{Account ID}:identity/123@gmail.com"
+            ]
+        }
+    ]
+}
+
+```
+<br>
+
+#### Once completed, your IAM role should appear as below:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaProcessorIAM.png" alt=" Lambda Processor IAM Role" width="600">
+  </p>  
+
+![LambdaEmail](https://github.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaProcessorIAM.png)
+
+<h4 align="center"> LambdaProcessorIAM </h4>
+
+<br>
+
+
+![LambdaEmail](https://github.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaEmailIAM.png)
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaEmailIAM.png" alt=" Lambda Processor IAM Role" width="600">
+  </p>
+
+<h4 align="center"> LambdaWaterMarkEmail </h4>
+
+<br>
 
 <br>
 
