@@ -250,14 +250,9 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaProcessorIAM.png" alt=" Lambda Processor IAM Role" width="600">
   </p>  
 
-![LambdaEmail](https://github.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaProcessorIAM.png)
-
 <h4 align="center"> LambdaProcessorIAM </h4>
 
 <br>
-
-
-![LambdaEmail](https://github.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaEmailIAM.png)
 
 
 <p align="center">
