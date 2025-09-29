@@ -168,3 +168,14 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 
 Following similar steps, we will create an IAM Role for our **Lambda Functions** 
 
+<br>
+
+<br>
+
+<h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
+
+
+<p align="center">
+  <img src="https://media.tenor.com/dAGxcNtm40kAAAAi/construction-work-in-progress.gif" width="500">
+</p>
+
