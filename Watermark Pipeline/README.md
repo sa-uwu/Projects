@@ -112,11 +112,11 @@ We will be using the **'folder approach'** and create two  folders within a sing
 > 
 > The `folder/file` hierarchy you see in the AWS console is just a **user-friendly representation**, designed to match how humans think about organizing data.
 
-#
 
 <br>
 
 ### 2. Configuring IAM Roles
+---
 <br>
 
 IAM allows **users, services,** and **applications** to assume roles and perform specific actions on AWS resources.  
@@ -141,7 +141,7 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 
 * Adhering to the principle of **least-privilege**, I have created a custom, fine-grained permission policy that will be attached to the **API Gateway IAM role `APIGW-S3-PutObject`**.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW-S3-PutObject.gif" alt="API Gateway IAM Role" width="600">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/gifs/APIGW-InlinePolicy.gif" alt="API Gateway IAM Role" width="600">
   </p>
 <br>
 
@@ -254,18 +254,62 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 
 <br>
 
+<br>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaEmailIAM.png" alt=" Lambda Processor IAM Role" width="600">
   </p>
-
+  
 <h4 align="center"> LambdaWaterMarkEmail </h4>
 
 <br>
 
-<br>
+
+### 3. Creating an API Gateway.
 
 <br>
+
+An **API Gateway** serves as the central entry point for client requests, acting as an intermediary between clients and backend services. 
+
+It also manages critical aspect such as **request and response handling**, **traffic management** (`routing`, `throttling`, `caching`) and **security enforcement**( `authentication` and `authorization`).
+
+By offloading these operational tasks, API Gateway handles much of the infrastructure complexity, enabling developers to focus on building scalable and efficient backend services.
+<br>
+
+> ### ✍️ Note:
+>
+>API Gateway is a powerful but complex service, with many configuration options around integrations, security, throttling, and request handling.
+>
+> Explaining its detailed configuration would take unnecessary time and is outside the scope of this project. Instead, I’ve included images and GIFs that provide a clearer picture of the API Gateway configuration and how it fits into the pipeline. 
+>
+> Please refer to those visuals for a better understanding. 
+>
+> 
+<br>
+
+#### 🚶‍♂️Follow the steps below create an API
+
+1. Navigate to the **API Gateway Console**.
+2. Click on **Create API**.
+3. Select **REST API**.
+4. Enter a meaningful **API Name**.
+5. Leave the remaining settings as **default**.
+6. Click **Create API**.
+
+Once an API is created, click on **Create resource** and add resource named ``{Bucket}``
+
+Next, follow the image below to configure a ``PUT`` method under ``{Bucket}`` resource.
+
+![s3 folders](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
+
+You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip configuring the API keys sections
+
+
+
+
+<br>
+
+***
 
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
 
@@ -274,3 +318,4 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
   <img src="https://media.tenor.com/dAGxcNtm40kAAAAi/construction-work-in-progress.gif" width="500">
 </p>
 
+   
