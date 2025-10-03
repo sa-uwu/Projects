@@ -1,4 +1,5 @@
-# 🖼️ Watermark Pipeline 
+<h1 align="center">🖼️ Watermark Pipeline </h1>
+
 
 It all started one fine day when I was struggling to remove a watermark from an image I wanted to use. That’s when I thought, 
 >**"if removing a watermark is this hard, how easy is it to apply one? 🤔"**
@@ -21,7 +22,7 @@ That is when an idea struck me:
 
 And that is how this small project came to life 🚀.  
 
----
+
 
 <br>
 
@@ -44,10 +45,8 @@ This automated workflow not only reduces the **time**, but it make the task **ea
 
 <br>
 
+## ⚙️ Getting Started
 
-<h1 align="center">⚙️ Getting Started</h1>
-
----
 
 <br>
 
@@ -67,15 +66,16 @@ This automated workflow not only reduces the **time**, but it make the task **ea
 
 ### 🛠️ Prerequisites
 
-#### a. AWS Account
-#### b. Access to following Services 
-  *  Lambda
-  *  API Gateway
-  *  Simple Storage Service (S3)
-  *  Identity and Access Management (IAM)
-  *  EventBridge
-  *  Simple Email Service (SES)
-#### c. Email id (preferably two)
+a. AWS Account  
+b. Access to following Services 
+- Lambda
+- API Gateway
+- Simple Storage Service (S3)
+- Identity and Access Management (IAM)
+- EventBridge
+- Simple Email Service (SES)      
+
+c.  Email id (preferably two)
 
 <br>
 
@@ -296,16 +296,30 @@ By offloading these operational tasks, API Gateway handles much of the infrastru
 5. Leave the remaining settings as **default**.
 6. Click **Create API**.
 
-Once an API is created, click on **Create resource** and add resource named ``{Bucket}``
+<br>
 
-Next, follow the image below to configure a ``PUT`` method under ``{Bucket}`` resource.
+ Once an API is created, click on **Create resource** and add resource named ``{Bucket}``
 
-![s3 folders](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
+- Next, follow the image below to configure a ``PUT`` method under ``{Bucket}`` resource.
 
-You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip configuring the API keys sections
+![method create](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
 
+You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip configuring the API keys sections.
 
+</br>
 
+- Your **Method Request** configuration should look like the example shown below:
+<br>
+
+![method request](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/MethodRequestConfig.png)
+
+<br>
+
+- Next, navigate to **Integration Request** for the ``PUT`` method and configure the settings as shown below.
+
+![method request](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/IntegrationRequest.png)
+
+#### 
 
 <br>
 
