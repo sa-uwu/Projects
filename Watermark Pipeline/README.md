@@ -65,28 +65,35 @@ This automated workflow not only reduces the **time**, but it make the task **ea
 
 
 <br>
+
 ---
 
-<h3><span style="color:#007acc;font-weight:bold;"> Prerequisites </span> 🛠️</h3>
+### Prerequisites 🛠️
 
+---
+<br>
 
+<span style="color:#007acc;font-weight:bold;"> 
 
 a. AWS Account  
-b. Access to following Services 
-- Lambda
-- API Gateway
-- Simple Storage Service (S3)
-- Identity and Access Management (IAM)
-- EventBridge
-- Simple Email Service (SES)      
+b. Access to following Services.        
+ - Lambda    
+ - API Gateway
+ - Simple Storage Service (S3)   
+ - Identity and Access Management (IAM)  
+ - EventBridge   
+ - Simple Email Service (SES).   
 
-c.  Email id (preferably two)
+c. Email id (preferably two).
 
-<br>
+ </span> 
+ <br>
+
+---
 
 ### 1. Creating an S3 Bucket 
 ---
-
+<br>
 
 For this project, we can either use **two separate S3 buckets** or create **two separate folders** within a single bucket.  
 
@@ -119,6 +126,8 @@ We will be using the **'folder approach'** and create two  folders within a sing
 
 
 <br>
+
+---
 
 ### 2. Configuring IAM Roles
 ---
@@ -249,12 +258,17 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 ```
 <br>
 
+---
+
+<br>
+
 #### Once completed, your IAM role should appear as below:
+
+<br>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaProcessorIAM.png" alt=" Lambda Processor IAM Role" width="600">
   </p>  
-
 <h4 align="center"> LambdaProcessorIAM </h4>
 
 <br>
@@ -269,8 +283,10 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 
 <br>
 
-
+---
 ### 3. Creating an API Gateway.
+
+---
 
 <br>
 
@@ -291,6 +307,8 @@ By offloading these operational tasks, API Gateway handles much of the infrastru
 >
 > 
 <br>
+
+---
 
 #### 🚶‍♂️Follow the steps below create an API
 
@@ -320,11 +338,56 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
+---
+
+<br>
+
 - Next, navigate to **Integration Request** for the ``PUT`` method and configure the settings as shown below.
 
 ![method request](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/IntegrationRequest.png)
 
-#### 
+<br>
+
+- **Once configured, deploy the API to a new stage.**
+
+<br>
+
+---
+### 3(a). Setting up Usage plan and API Keys.  
+
+---
+<br>
+
+
+🔑 **Creating API Keys**
+
+
+1. On API Gateway Console, navigate to `API Keys`
+2. Click **Create API key**
+3. Enter a meaningful **Key Name**.
+4. Set `API Key` → Auto Generate ✅ → and click **Save**
+
+> **⚠️ Important:** After creating the API key, you need to associate it with a **Usage Plan** to enforce throttling and quota limits.
+
+
+<br>
+
+**⚙️ Configuring Usage Plan**
+
+1. On API Gateway Console, navigate to `Usage Plan`
+2. Click **Create usage plan**
+3. Enter a meaningful **Name**.
+4. Configure **Throttling**:
+   - **Rate** = x
+   - **Burst** = Rate × 3 ✅  
+
+> **Note:** Ideally, the **Burst** value should be **2–5× your Rate**.  
+> For example, if your Rate is 10 requests/sec, a Burst of 20–50 is recommended.  
+> This allows short spikes of traffic without overwhelming your backend.
+
+<br>
+
+> **Reminder ✅:** Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
 
 <br>
 
