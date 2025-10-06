@@ -77,14 +77,15 @@ This automated workflow not only reduces the **time**, but it make the task **ea
 
 a. AWS Account  
 b. Access to following Services.        
- - Lambda    
- - API Gateway
- - Simple Storage Service (S3)   
- - Identity and Access Management (IAM)  
- - EventBridge   
- - Simple Email Service (SES).   
+ - **Lambda**    
+ - **API Gateway**
+ - **Simple Storage Service (S3)**
+ - **Identity and Access Management (IAM)**  
+ - **EventBridge** 
+ - **Simple Email Service (SES)**   
 
-c. Email id (preferably two).
+c. Email id (preferably two).  
+d. Postman application
 
  </span> 
  <br>
@@ -108,7 +109,7 @@ We will be using the **'folder approach'** and create two  folders within a sing
 
 <br> 
 
-#### Once the bucket is created, click the **'Create Folder'** button and create two folders named **`raw`** and **`final`**.
+#### Once the bucket is created, click the **'Create Folder'** button and create two folders named **`raw`** and **`processed`**.
 
 ![s3 folders](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/s3/S3Folders.png)
 
@@ -323,11 +324,13 @@ By offloading these operational tasks, API Gateway handles much of the infrastru
 
  Once an API is created, click on **Create resource** and add resource named ``{Bucket}``
 
-- Next, follow the image below to configure a ``PUT`` method under ``{Bucket}`` resource.
+Then, create another resource under `{Bucket}` named `{Filename}`.
+
+- Next, follow the image below to configure a ``PUT`` method under `{Filename}` resource.
 
 ![method create](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
 
-You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip configuring the API keys sections.
+You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#3a-setting-up-usage-plan-and-api-keys) section.
 
 </br>
 
@@ -348,12 +351,28 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
-- **Once configured, deploy the API to a new stage.**
+<br>
+
+---
+### 3.1. Configuring Binary Media Type.  
+
+---
+
+<br>
+
+1. Navigate to your API console.
+2. In the left panel select **'API settings'**.
+3. Scroll down and click on **'Manage media types'**
+4. Add `image/jpg` and `image/png` as Binary Media Type and save.
+
+<br>
+
+>Binary Media Types essentially tells API Gateway how to handle files (like images or PDFs) correctly instead of treating them as text.
 
 <br>
 
 ---
-### 3(a). Setting up Usage plan and API Keys.  
+### 3.2. Setting up Usage plan and API Keys.  
 
 ---
 <br>
@@ -367,10 +386,13 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 3. Enter a meaningful **Key Name**.
 4. Set `API Key` → Auto Generate ✅ → and click **Save**
 
+<br>
+
 > **⚠️ Important:** After creating the API key, you need to associate it with a **Usage Plan** to enforce throttling and quota limits.
 
-
 <br>
+
+
 
 **⚙️ Configuring Usage Plan**
 
@@ -380,6 +402,8 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 4. Configure **Throttling**:
    - **Rate** = x
    - **Burst** = Rate × 3 ✅  
+
+<br>
 
 > **Note:** Ideally, the **Burst** value should be **2–5× your Rate**.  
 > For example, if your Rate is 10 requests/sec, a Burst of 20–50 is recommended.  
@@ -391,7 +415,32 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
-***
+
+### **Once configured, deploy the API to a new stage.**
+
+---
+### Testing API
+
+
+
+---
+<br>
+Before moving forward we need to check if our api works as expected.
+
+For this we are going to use POSTMAN. Follow below steps to test the API.
+
+1. Navigate to the API Gateway console and in `Stages` section copy the invoke url for deployed stage. in my case `https://.execute-api.us-east-1.amazonaws.com/dev1/{Bucket}`
+
+2. Open PostMan application, select `Put` Method and paste the invoke url.
+
+3. replace the holder **{Bucket}** with the s3 bucket you created for the project.
+
+4. 
+<br>
+
+
+
+
 
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
 
@@ -400,4 +449,3 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
   <img src="https://media.tenor.com/dAGxcNtm40kAAAAi/construction-work-in-progress.gif" width="500">
 </p>
 
-   
