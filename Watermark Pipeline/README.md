@@ -298,7 +298,7 @@ It also manages critical aspect such as **request and response handling**, **tra
 By offloading these operational tasks, API Gateway handles much of the infrastructure complexity, enabling developers to focus on building scalable and efficient backend services.
 <br>
 
-> ### ✍️ Note:
+> [!Note]
 >
 >API Gateway is a powerful but complex service, with many configuration options around integrations, security, throttling, and request handling.
 >
@@ -388,7 +388,8 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
-> **⚠️ Important:** After creating the API key, you need to associate it with a **Usage Plan** to enforce throttling and quota limits.
+> [!Important]
+>After creating the API key, you need to associate it with a **Usage Plan** to enforce throttling and quota limits.
 
 <br>
 
@@ -416,7 +417,8 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
-> **[!REMAINDER] ✅:** Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
+> [!REMAINDER]
+> Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
 
 
 #### **Once configured, your API is ready to be deployed the API to a new stage.**
