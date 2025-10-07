@@ -408,7 +408,9 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
-> [!NOTE]: Ideally, the **Burst** value should be **2–5× your Rate**.  
+> [!NOTE]
+>
+>Ideally, the **Burst** value should be **2–5× your Rate**.  
 > For example, if your Rate is 10 requests/sec, a Burst of 20–50 is recommended.  
 > This allows short spikes of traffic without overwhelming your backend.
 
