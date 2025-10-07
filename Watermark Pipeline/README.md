@@ -417,7 +417,8 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 <br>
 
-> [!REMAINDER]
+> [!IMPORTANT]
+>
 > Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
 
 
