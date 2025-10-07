@@ -401,43 +401,66 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 3. Enter a meaningful **Name**.
 4. Configure **Throttling**:
    - **Rate** = x
-   - **Burst** = Rate × 3 ✅  
+   - **Burst** = Rate × 3 ✅ <br>       
+5. Under **Quota**, specify the total number of requests a user can make within the selected time period (day, week, or month).
+
+
 
 <br>
 
-> **Note:** Ideally, the **Burst** value should be **2–5× your Rate**.  
+> [!NOTE]: Ideally, the **Burst** value should be **2–5× your Rate**.  
 > For example, if your Rate is 10 requests/sec, a Burst of 20–50 is recommended.  
 > This allows short spikes of traffic without overwhelming your backend.
 
 <br>
 
-> **Reminder ✅:** Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
+> **[!REMAINDER] ✅:** Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
+
+
+#### **Once configured, your API is ready to be deployed the API to a new stage.**
 
 <br>
-
-
-### **Once configured, deploy the API to a new stage.**
 
 ---
-### Testing API
+### ✅ Testing API using Postman
 
 
 
 ---
 <br>
-Before moving forward we need to check if our api works as expected.
+Before moving forward, let’s verify that the API works as expected using Postman.
 
-For this we are going to use POSTMAN. Follow below steps to test the API.
-
-1. Navigate to the API Gateway console and in `Stages` section copy the invoke url for deployed stage. in my case `https://.execute-api.us-east-1.amazonaws.com/dev1/{Bucket}`
-
-2. Open PostMan application, select `Put` Method and paste the invoke url.
-
-3. replace the holder **{Bucket}** with the s3 bucket you created for the project.
-
-4. 
 <br>
 
+1. In the API Gateway Console, go to the **Stages** section and copy the Invoke URL for your deployed stage. 
+
+    Example:
+    `https://.execute-api.us-east-1.amazonaws.com/dev1/{Bucket}/{Filename}`
+
+
+2. Open Postman, select the `PUT` method, and paste the Invoke URL.
+
+3. Replace the placeholders:    
+    +   **{Bucket}** → your S3 bucket name
+    +   **{Filename}** → desired file name for the image
+
+    Example:
+    `https://.execute-api.us-east-1.amazonaws.com/dev1/mywatermarkbucket.us-e-1/test1`
+
+4. Under **'Authorization'** choose `API Key`as auth type.  
+    + **Key**: `x-api-key`
+    + **value**: your actual API key value from the API Gateway console
+    + **Add to**: `Header`
+5. Go to **Body** → select **Binary** → click **Select File** and upload an image from your local system.
+6. In the Headers tab, ensure the following are present with their values:
+    + `x-api-key` → your actual API key value from the API Gateway console
+    + `Content-Type` → image/png or image/jpg
+7. Add one more header:
+    + **Key**: `x-amz-tagging`
+    + **Value** `text=test_msg&size=L&position=Top-right&color=Grey&Email=xyz@gmail.com`
+8. Click **Send** and confirm that the response returns a `200 OK` status code.
+9. Open your S3 bucket and check the `raw/` folder to confirm that the image has been uploaded with the correct tags.
+<br>
 
 
 
