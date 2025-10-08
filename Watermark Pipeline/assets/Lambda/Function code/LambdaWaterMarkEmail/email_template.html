@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Watermarked Image is Ready</title>
+</head>
+<body style="margin: 0; padding: 20px 0; background-color: #f4f4f4; font-family: Arial, sans-serif;">
+
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" style="max-width: 600px; background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 8px;" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td style="padding: 20px;">
+
+              <h1 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px; font-size: 29px; margin-top: 0;">
+                Watermarking Service
+              </h1>
+
+              <h2 style="font-size: 19px; color: #333333;">Your Watermarked Image is Ready!</h2>
+              <p style="color: #555555;">Dear User,</p>
+
+              <p style="color: #555555;">
+                Your image "<strong>{{ image_filename }}</strong>" has been successfully watermarked.
+              </p>
+              
+              <p style="color: #555555;">Please use the links below to manage your file:</p>
+
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 20px; margin-bottom: 20px;">
+                <tr>
+                  <td align="center">
+                    
+                    <a href="{{ view_url }}" target="_blank" style="
+                      display: inline-block;
+                      background-color: #28A745;
+                      color: #ffffff !important;
+                      border: 1px solid #28A745;
+                      padding: 12px 25px;
+                      margin: 0 10px;
+                      text-decoration: none;
+                      border-radius: 5px;
+                      font-weight: bold;
+                      font-size: 16px;
+                      line-height: 1.2;
+                    ">
+                        🔍 View Image
+                    </a>
+                    
+                    <a href="{{ download_url }}" target="_blank" style="
+                      display: inline-block;
+                      background-color: #007bff;
+                      color: #ffffff !important;
+                      padding: 12px 25px;
+                      margin: 0 10px;
+                      text-decoration: none;
+                      border-radius: 5px;
+                      font-weight: bold;
+                      font-size: 16px;
+                      line-height: 1.2;
+                    ">
+                        ⬇️ Download Image
+                    </a>
+
+                  </td>
+                </tr>
+              </table>
+
+              <p style="text-align: center; color: #dc3545; font-size: 0.9em; font-weight: bold;">
+                *Important: These links are secure and **valid for 1 hour** only.
+              </p>
+
+              <p style="color: #555555;">Thank you for using our service! We hope to see you again soon.</p>
+
+              <p style="font-size: 0.9em; color: #6c757d; border-top: 1px solid #eeeeee; padding-top: 10px;">
+                The Watermarking Team
+              </p>
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
