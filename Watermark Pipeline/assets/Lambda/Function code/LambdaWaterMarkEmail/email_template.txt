@@ -1,0 +1,17 @@
+Dear User,
+
+Your watermarked image is ready! File: "{{ image_filename }}"
+
+==============================================
+VIEW LINK (Valid for 1 Hour):
+{{ view_url }}
+==============================================
+DOWNLOAD LINK (Valid for 1 Hour):
+{{ download_url }}
+==============================================
+
+Please note both secure links will expire 60 minutes after this email was sent.
+
+Thank you for using our service!
+
+The Watermarking Team
