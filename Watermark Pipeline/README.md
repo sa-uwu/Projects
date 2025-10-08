@@ -189,6 +189,8 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 <br>
 
 - **Inline policy for `LambdaWaterMarkProcessor`**
+<a name="LambdaProcessor"></a>
+
 
 ``` JSON
 {
@@ -225,6 +227,7 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
 <br>
 
 - **Inline policy for `LambdaWaterMarkEmail`**
+
 
 ```JSON 
 {
@@ -271,6 +274,7 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Images/LambdaProcessorIAM.png" alt=" Lambda Processor IAM Role" width="600">
   </p>  
 <h4 align="center"> LambdaProcessorIAM </h4>
+<a name="LambdaProcessor"></a>
 
 <br>
 
@@ -281,6 +285,7 @@ For this project, we need to configure IAM roles for both **Lambda** and **API G
   </p>
   
 <h4 align="center"> LambdaWaterMarkEmail </h4>
+<a name="LambdaEmail"></a>
 
 <br>
 
@@ -330,7 +335,7 @@ Then, create another resource under `{Bucket}` named `{Filename}`.
 
 ![method create](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
 
-You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#configuring-usag-plan) section.
+You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#configuring-usag-plan-and-api-keys) section.
 
 </br>
 
@@ -373,6 +378,7 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 ---
 ### 3.2. Setting up Usage plan and API Keys.  
+<a name="configuring-usag-plan-and-api-keys"></a>
 
 ---
 <br>
@@ -396,7 +402,6 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 
 **⚙️ Configuring Usage Plan**
-<a name="configuring-usag-plan"></a>
 
 
 1. On API Gateway Console, navigate to `Usage Plan`
@@ -518,11 +523,108 @@ Click the verification link to confirm.
 
 <br>
 
----
+----
 ### 5. Deploying Lambda functions
 
 ---
 
+#### **5.1 `LambdaImageProcessor`**
+
+1. Navigate to the Lambda console and click **Create Function**
+2. Configure the function as follows:
+    + Name: **`LambdaImageProcessor`**
+    + Architecture: **x86_64**
+    + Runtime: **Python 3.10**
+    + Execution Role: [**LambdaWaterMarkProcessor↗️**](#lambdaprocessor) (configured earlier)
+
+    (You can also refer to the GIF below for visual guidance)
+
+<br>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/gifs/Deploying%20Lambda%20Function.gif" alt="LambdaFunction" width="700">
+  </p>
+
+<br>
+
+3. Deploy Function Code:
+    + Refer to the [**function code↗**]() and deploy Lambda function.
+
+4. Add Pillow Layer:
+    + Navigate to **Code** → **Add Layer** and enter the following Layer ARN:
+ `arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-Pillow:9`
+
+>[!Note]
+Incase, you are using a different python version, refer [**Klayers Github repository↗**]("https://github.com/keithrozario/Klayers/tree/master/deployments") as suggested in AWS [**re:Post↗**]("https://repost.aws/questions/QU11QL_JaISAOSykJteHyFHg/issue-with-importing-pillow-library-for-image-processing-in-aws-lambda-environment#:~:text=Hi%2C%20Pillow%20is%20packaged%20as%20a%20standard%20Lambda%20layer.").
+
+5. Set Environment Variables:
+    + Under **Configuration** section → Environment Variables
+        + **`Key: OutputBucket`**
+        + **`Value: {Your S3 Bucket Name}`**
+6. Adding S3 trigger:
+    + Click on **Add trigger**
+    + Select **S3 Bucket** as a source
+    + Select `PUT` as event type 
+    + `raw/` prefix
+    + Acknowledge the warning and click **Add**
+
+    (refer to the GIF below for visual guidance)
+
+    <p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/gifs/Lambda%20S3%20trigger.gif" alt="LambdaFunction" width="700">
+  </p>
+
+
+---
+<br>
+
+#### **5.2 `LambdaWaterMarkEmail`**
+<br>
+
+1. Navigate to the Lambda console and click **Create Function**
+2. Configure the function as follows:
+    + Name: **`LambdaWaterMarkEmail`**
+    + Architecture: **x86_64**
+    + Runtime: **Python 3.10**
+    + Execution Role: [**LambdaWaterMarkEmail↗**](#lamddaemail) (configured earlier)
+
+3. Deploy Function Code:
+    + Refer to the [**function code↗**]() and deploy Lambda function.
+    ```
+    LambdaImageProcessor/
+    │
+    ├── lambda_function.py
+    ├── email_template.html
+    └── email_template.txt
+    ```
+4. Set Environment Variables:
+
+    |    **Key**        |      **Value**          |
+    | ----------------- | ----------------------- |
+    | **OutputBucket**  |  **{YourS3BucketName}** |
+    | **SENDER_EMAIL**  |  **sender@gmail.com**   |
+
+<br>
+
+5. Adding S3 trigger:
+    + Click on **Add trigger**
+    + Select **S3 Bucket** as a source
+    + Select `PUT` as event type 
+    + `processed/` prefix
+    + Acknowledge the warning and click **Add**
+
+
+
+
+
+Similarly, create another Lambda function named ``
+.
+<br>
+
+
+
+LambdaWaterMarkEmail
+ 
 
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
 
