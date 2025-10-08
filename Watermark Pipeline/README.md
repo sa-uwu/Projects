@@ -469,14 +469,10 @@ Before moving forward, let’s verify that the API works as expected using Postm
 <br>
 
 <h3 align="center">😮‍💨 Phew... that was a lot of steps!</h3>
-<h4 align="center">But hang on, we’re almost there! 🚀</h4>
 
+<br>
 
-
-<p align="center">
-  <img src="https://media1.tenor.com/m/UFAbcdEYaNMAAAAd/dw-tired-dw.gif" width="500">
-</p>
-
+<h4 align="center">But hang on🚀</h4>
 
 <p align="center">
   <img src="https://media1.tenor.com/m/KQDte4i0o50AAAAC/crawling-back.gif" width="500">
