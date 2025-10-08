@@ -330,7 +330,7 @@ Then, create another resource under `{Bucket}` named `{Filename}`.
 
 ![method create](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
 
-You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#setting-up-usage-plan-and-api-keys) section.
+You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#configuring-usag-plan) section.
 
 </br>
 
@@ -396,6 +396,8 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 
 
 **⚙️ Configuring Usage Plan**
+<a name="configuring-usag-plan"></a>
+
 
 1. On API Gateway Console, navigate to `Usage Plan`
 2. Click **Create usage plan**
