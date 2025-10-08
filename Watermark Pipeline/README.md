@@ -330,7 +330,7 @@ Then, create another resource under `{Bucket}` named `{Filename}`.
 
 ![method create](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/API%20Gateway/Images/APIGW%20Method.png)
 
-You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#3a-setting-up-usage-plan-and-api-keys) section.
+You can uncheck ``API key required`` under **Method request settings** for simplicity matters and skip [**Setting up Usage plan and API Keys**](#setting-up-usage-plan-and-api-keys) section.
 
 </br>
 
@@ -468,11 +468,14 @@ Before moving forward, let’s verify that the API works as expected using Postm
 
 <br>
 
+---
+<br>
+
 <h3 align="center">😮‍💨 Phew... that was a lot of steps!</h3>
 
 <br>
 
-<h4 align="center">But hang on🚀</h4>
+<h4 align="center">But hang on </h4>
 
 <p align="center">
   <img src="https://media1.tenor.com/m/KQDte4i0o50AAAAC/crawling-back.gif" width="500">
@@ -510,6 +513,13 @@ Click the verification link to confirm.
 <br>
 
 ### ✨ Now that all the pieces are in place, let’s move on to configuring and deploying Lambda functions!
+
+<br>
+
+---
+### 5. Deploying Lambda functions
+
+---
 
 
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
