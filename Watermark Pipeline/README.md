@@ -403,7 +403,7 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 4. Configure **Throttling**:
    - **Rate** = x
    - **Burst** = Rate × 3 ✅ <br>       
-5. Under **Quota**, specify the total number of requests a user can make within the selected time period (day, week, or month).
+5. Under **Quota**, specify the total number of requests to the api allowed within the selected time period (day, week, or month).
 
 
 
@@ -422,7 +422,7 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 > Once the **Usage Plan** is created, make sure to associate your `API Stage` and `API Keys` so that the throttling and quota settings take effect.
 
 
-#### **Once configured, your API is ready to be deployed the API to a new stage.**
+#### **Once configured, your API is ready to be deployed to a new stage..**
 
 <br>
 
@@ -465,9 +465,55 @@ Before moving forward, let’s verify that the API works as expected using Postm
     + **Value** `text=test_msg&size=L&position=Top-right&color=Grey&Email=xyz@gmail.com`
 8. Click **Send** and confirm that the response returns a `200 OK` status code.
 9. Open your S3 bucket and check the `raw/` folder to confirm that the image has been uploaded with the correct tags.
+
 <br>
 
+<h3 align="center">😮‍💨 Phew... that was a lot of steps!</h3>
+<h4 align="center">But hang on, we’re almost there! 🚀</h4>
 
+
+
+<p align="center">
+  <img src="https://media1.tenor.com/m/UFAbcdEYaNMAAAAd/dw-tired-dw.gif" width="500">
+</p>
+
+
+<p align="center">
+  <img src="https://media1.tenor.com/m/KQDte4i0o50AAAAC/crawling-back.gif" width="500">
+</p>
+
+<br>
+
+---
+### 4. Creating SES Identity
+
+---
+
+For this project we need two email addresses.
++ **Sender**
++ **Receiver** 
+
+<br>
+
+Follow below steps to configure SES Identities.
+1. Navigate to the Amazon SES Console.
+2. Under Identities, click Create identity.
+3. Choose Email address, enter a valid email, and create the identity.
+4. Check your inbox, you will receive a verification email from Amazon SES.
+Click the verification link to confirm.  
+📸 See the screenshot below for reference.
+
+5. Repeat the same steps for the second email address.
+
+<br>
+
+>💡 Once verified, you can send messages between these two addresses.
+
+>📬 Check your spam folder if the verification mail doesn’t show up!
+
+<br>
+
+### ✨ Now that all the pieces are in place, let’s move on to configuring and deploying Lambda functions!
 
 
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
