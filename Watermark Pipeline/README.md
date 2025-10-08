@@ -557,7 +557,7 @@ Click the verification link to confirm.
 
 >[!Note]
 
-Incase, you are using a different python version, refer [**Klayers Github repository↗**]("https://github.com/keithrozario/Klayers/tree/master/deployments") as suggested in AWS [**re:Post↗**]("https://repost.aws/questions/QU11QL_JaISAOSykJteHyFHg/issue-with-importing-pillow-library-for-image-processing-in-aws-lambda-environment#:~:text=Hi%2C%20Pillow%20is%20packaged%20as%20a%20standard%20Lambda%20layer.").
+Incase, you are using a different python version, refer [**Klayers Github repository↗**](https://github.com/keithrozario/Klayers/tree/master/deployments) as suggested in AWS [**re:Post↗**](https://repost.aws/questions/QU11QL_JaISAOSykJteHyFHg/issue-with-importing-pillow-library-for-image-processing-in-aws-lambda-environment#:~:text=Hi%2C%20Pillow%20is%20packaged%20as%20a%20standard%20Lambda%20layer.).
 
 5. Set Environment Variables:
     + Under **Configuration** section → Environment Variables
