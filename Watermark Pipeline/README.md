@@ -529,7 +529,7 @@ Click the verification link to confirm.
 
 ---
 
-#### **5.1 `LambdaImageProcessor`**
+#### **5.1 `c`**
 
 1. Navigate to the Lambda console and click **Create Function**
 2. Configure the function as follows:
@@ -549,11 +549,12 @@ Click the verification link to confirm.
 <br>
 
 3. Deploy Function Code:
-    + Refer to the [**function code↗**]() and deploy Lambda function.
+    + Refer to the [**function code↗**](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Function%20code/LambdaImageProcessor/lambda_function.py) and deploy Lambda function.
 
 4. Add Pillow Layer:
     + Navigate to **Code** → **Add Layer** and enter the following Layer ARN:
- `arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-Pillow:9`
+
+         `arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-Pillow:9`
 
 >[!Note]
 
@@ -587,10 +588,10 @@ Incase, you are using a different python version, refer [**Klayers Github reposi
     + Name: **`LambdaWaterMarkEmail`**
     + Architecture: **x86_64**
     + Runtime: **Python 3.10**
-    + Execution Role: [**LambdaWaterMarkEmail↗**](#lamddaemail) (configured earlier)
+    + Execution Role: [**LambdaWaterMarkEmail↗**](#lambdaemail) (configured earlier)
 
 3. Deploy Function Code:
-    + Refer to the [**function code↗**]() and deploy Lambda function.
+    + Refer to the [**function code↗**](https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/Lambda/Function%20code/LambdaWaterMarkEmail/lambda_function.py) and deploy Lambda function.
     ```
     LambdaImageProcessor/
     │
