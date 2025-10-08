@@ -502,6 +502,7 @@ For this project we need two email addresses.
 <br>
 
 Follow below steps to configure SES Identities.
+
 1. Navigate to the Amazon SES Console.
 2. Under Identities, click Create identity.
 3. Choose Email address, enter a valid email, and create the identity.
@@ -555,6 +556,7 @@ Click the verification link to confirm.
  `arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-Pillow:9`
 
 >[!Note]
+
 Incase, you are using a different python version, refer [**Klayers Github repository↗**]("https://github.com/keithrozario/Klayers/tree/master/deployments") as suggested in AWS [**re:Post↗**]("https://repost.aws/questions/QU11QL_JaISAOSykJteHyFHg/issue-with-importing-pillow-library-for-image-processing-in-aws-lambda-environment#:~:text=Hi%2C%20Pillow%20is%20packaged%20as%20a%20standard%20Lambda%20layer.").
 
 5. Set Environment Variables:
@@ -614,11 +616,6 @@ Incase, you are using a different python version, refer [**Klayers Github reposi
     + Acknowledge the warning and click **Add**
 
 
-
-
-
-Similarly, create another Lambda function named ``
-.
 <br>
 
 
