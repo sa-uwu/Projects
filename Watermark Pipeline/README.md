@@ -581,7 +581,6 @@ Incase, you are using a different python version, refer [**Klayers Github reposi
 <br>
 
 #### **5.2 `LambdaWaterMarkEmail`**
-<br>
 
 1. Navigate to the Lambda console and click **Create Function**
 2. Configure the function as follows:
@@ -617,10 +616,6 @@ Incase, you are using a different python version, refer [**Klayers Github reposi
 
 
 <br>
-
-
-
-LambdaWaterMarkEmail
  
 
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
