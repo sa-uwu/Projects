@@ -383,6 +383,17 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 ---
 <br>
 
+What’s more important than building **scalable** AWS infrastructure is having a **secure** AWS infrastructure. 
+
+You don’t want malicious users spamming your API and making your AWS bill go brrrrr 📈 🚀
+
+![](https://x.com/_lhermann/status/1742808088980160849/photo/1)
+
+This is where **API Keys** come into play.
+
+They help control and secure access to your API by ensuring only clients with a valid key can use specific methods.
+
+When combined with usage plans, API keys let you enforce rate limits, quotas, and burst limits, protecting your backend from overuse and managing API consumption effectively.
 
 🔑 **Creating API Keys**
 
@@ -436,6 +447,8 @@ You can uncheck ``API key required`` under **Method request settings** for simpl
 ---
 ### ✅ Testing API using Postman
 
+<a name="testingAPI"></a>
+
 
 
 ---
@@ -457,7 +470,7 @@ Before moving forward, let’s verify that the API works as expected using Postm
     +   **{Filename}** → desired file name for the image
 
     Example:
-    `https://.execute-api.us-east-1.amazonaws.com/dev1/mywatermarkbucket.us-e-1/test1`
+    `https://{api id}.execute-api.us-east-1.amazonaws.com/dev1/mywatermarkbucket.us-e-1/test1`
 
 4. Under **'Authorization'** choose `API Key`as auth type.  
     + **Key**: `x-api-key`
@@ -469,9 +482,10 @@ Before moving forward, let’s verify that the API works as expected using Postm
     + `Content-Type` → image/png or image/jpg
 7. Add one more header:
     + **Key**: `x-amz-tagging`
-    + **Value** `text=test_msg&size=L&position=Top-right&color=Grey&Email=xyz@gmail.com`
+    + **Value** `text=wayne%enterprises&size=large&position=Top-right&color=Grey&Email=receiver@gmail.com`
 8. Click **Send** and confirm that the response returns a `200 OK` status code.
 9. Open your S3 bucket and check the `raw/` folder to confirm that the image has been uploaded with the correct tags.
+
 
 <br>
 
@@ -529,7 +543,7 @@ Click the verification link to confirm.
 
 ---
 
-#### **5.1 `c`**
+#### **5.1 **
 
 1. Navigate to the Lambda console and click **Create Function**
 2. Configure the function as follows:
@@ -615,10 +629,38 @@ Incase, you are using a different python version, refer [**Klayers Github reposi
     + `processed/` prefix
     + Acknowledge the warning and click **Add**
 
+<br>
 
 <br>
- 
 
+---
+
+<h1 align="center"> Testing the pipeline </h1>
+
+<br> 
+
+Now that all the building blocks of this pipeline are in place, let's upload another image through the API Gateway URL.
+
+1. Navigate to Postman and follow the steps peroformed earlier while [**testing api↗**](#testingapi)
+
+2. Navigate to your S3 bucket and check the `raw/` folder to confirm that the uploaded image is present.
+
+3. Check the `processed/` folder to ensure that the watermarked (or processed) image has been uploaded successfully.
+
+4. Open the receiver email inbox configured in your pipeline. An email with the subject **"Your Watermarked Image is Ready!"** will be waiting for you.
+
+<br>
+
+>[! NOTE]:
+>(check the spam/junk folder if not found).
+
+5. The email contains a presigned URL embedded in the "View Image" and "Download Image" buttons. Click either button to access your processed image.
+
+>[! NOTE]:
+> The presigned URL is valid for 1 hour (60 minutes) from the time the email is received.
+
+
+---
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
 
 
