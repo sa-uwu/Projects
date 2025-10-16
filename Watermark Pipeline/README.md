@@ -415,8 +415,6 @@ When combined with usage plans, API keys let you enforce rate limits, quotas, an
 > [!Important]
 >After creating the API key, you need to associate it with a **Usage Plan** to enforce throttling and quota limits.
 
-<br>
-
 ---
 
 **⚙️ Configuring Usage Plan**
@@ -434,7 +432,7 @@ When combined with usage plans, API keys let you enforce rate limits, quotas, an
 
 <br>
 
-> [! NOTE]
+> [!NOTE]
 >
 >Ideally, the **Burst** value should be **2–5× your Rate**.  
 > For example, if your Rate is 10 requests/sec, a Burst of 20–50 is recommended.  
@@ -489,7 +487,7 @@ Before moving forward, let’s verify that the API works as expected using Postm
     + `Content-Type` → image/png or image/jpg
 7. Add one more header:
     + **Key**: `x-amz-tagging`
-    + **Value** `text=wayne%enterprises&size=large&position=Top-right&color=Grey&Email=receiver@gmail.com`
+    + **Value** `text=WayneEnterprises&size=large&position=Top-right&color=Black&Email=receiver@gmail.com`
 8. Click **Send** and confirm that the response returns a `200 OK` status code.
 9. Open your S3 bucket and check the `raw/` folder to confirm that the image has been uploaded with the correct tags.
 
@@ -662,16 +660,24 @@ Now that all the building blocks of this pipeline are in place, let's upload ano
   <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/test.png" width="700">
 </p>
 
->[! NOTE] :
->
+>[!NOTE] :
 >(check the spam/junk folder if not found).
 
 5. The email contains a presigned URL embedded in the "View Image" and "Download Image" buttons. Click either button to access your processed image.
 
->[! NOTE] :
+>[!NOTE] :
 >
-> The presigned URL is valid for 1 hour (60 minutes) from the time the email is received.
+> The presigned URL is valid for 1 hour (60 minutes) from the time it is received.
 
+---
+
+### **🧠 Uploading via AWS CLI**
+
+If you read 
+
+```
+aws s3api put-object --bucket {BucketName} --key raw/{image.png/jpg} --body {localPath} --tagging "text=randomtxt&size=XXL&position=Top-right&color=blue&Email=receiver@gmail.com"
+``` 
 
 ---
 <h1 align="center">  Documentation is being refined. Apologies for the inconvinence 🙏 </h1>
