@@ -387,7 +387,10 @@ What’s more important than building **scalable** AWS infrastructure is having 
 
 You don’t want malicious users spamming your API and making your AWS bill go brrrrr 📈 🚀
 
-![](https://x.com/_lhermann/status/1742808088980160849/photo/1)
+<p align="center">
+  <img src="https://x.com/_lhermann/status/1742808088980160849/photo/1" width="700">
+</p>
+
 
 This is where **API Keys** come into play.
 
