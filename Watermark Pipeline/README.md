@@ -387,10 +387,13 @@ What’s more important than building **scalable** AWS infrastructure is having 
 
 You don’t want malicious users spamming your API and making your AWS bill go brrrrr 📈 🚀
 
+<br>
+
 <p align="center">
-  <img src="https://x.com/_lhermann/status/1742808088980160849/photo/1" width="700">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/awsbill.jpeg" width="700">
 </p>
 
+<br>
 
 This is where **API Keys** come into play.
 
@@ -398,6 +401,7 @@ They help control and secure access to your API by ensuring only clients with a 
 
 When combined with usage plans, API keys let you enforce rate limits, quotas, and burst limits, protecting your backend from overuse and managing API consumption effectively.
 
+---
 🔑 **Creating API Keys**
 
 
@@ -413,7 +417,7 @@ When combined with usage plans, API keys let you enforce rate limits, quotas, an
 
 <br>
 
-
+---
 
 **⚙️ Configuring Usage Plan**
 
@@ -430,7 +434,7 @@ When combined with usage plans, API keys let you enforce rate limits, quotas, an
 
 <br>
 
-> [!NOTE]
+> [! NOTE]
 >
 >Ideally, the **Burst** value should be **2–5× your Rate**.  
 > For example, if your Rate is 10 requests/sec, a Burst of 20–50 is recommended.  
@@ -574,8 +578,8 @@ Click the verification link to confirm.
          `arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p310-Pillow:9`
 
 >[!Note]
-
-Incase, you are using a different python version, refer [**Klayers Github repository↗**](https://github.com/keithrozario/Klayers/tree/master/deployments) as suggested in AWS [**re:Post↗**](https://repost.aws/questions/QU11QL_JaISAOSykJteHyFHg/issue-with-importing-pillow-library-for-image-processing-in-aws-lambda-environment#:~:text=Hi%2C%20Pillow%20is%20packaged%20as%20a%20standard%20Lambda%20layer.).
+>
+>Incase, you are using a different python version, refer [**Klayers Github repository↗**](https://github.com/keithrozario/Klayers/tree/master/deployments) as suggested in AWS [**re:Post↗**](https://repost.aws/questions/QU11QL_JaISAOSykJteHyFHg/issue-with-importing-pillow-library-for-image-processing-in-aws-lambda-environment#:~:text=Hi%2C%20Pillow%20is%20packaged%20as%20a%20standard%20Lambda%20layer.).
 
 5. Set Environment Variables:
     + Under **Configuration** section → Environment Variables
@@ -654,12 +658,18 @@ Now that all the building blocks of this pipeline are in place, let's upload ano
 
 <br>
 
->[! NOTE]:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sa-uwu/Projects/main/Watermark%20Pipeline/assets/test.png" width="700">
+</p>
+
+>[! NOTE] :
+>
 >(check the spam/junk folder if not found).
 
 5. The email contains a presigned URL embedded in the "View Image" and "Download Image" buttons. Click either button to access your processed image.
 
->[! NOTE]:
+>[! NOTE] :
+>
 > The presigned URL is valid for 1 hour (60 minutes) from the time the email is received.
 
 
